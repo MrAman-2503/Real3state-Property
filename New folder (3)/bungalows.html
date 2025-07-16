@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bungalows - Real Estate Broker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <header class="bg-white shadow p-4 flex justify-between items-center relative">
+    <h1 class="text-3xl font-bold text-blue-700">Real Estate Broker</h1>
+    <button id="menu-btn" class="text-blue-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <nav id="sliding-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 flex flex-col p-4 space-y-4">
+      <button id="close-menu-btn" class="self-end text-gray-600 hover:text-gray-900 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <a href="index.html" class="text-gray-700 hover:underline">Home</a>
+      <a href="about.html" class="text-gray-700 hover:underline">About</a>
+      <a href="contact.html" class="text-gray-700 hover:underline">Contact</a>
+      <a href="login.html" class="text-gray-700 hover:underline">Login</a>
+      <a href="seller.html" class="text-gray-700 hover:underline">Sell Property</a>
+      <a href="ceo.html" class="text-gray-700 hover:underline">CEO Assistant</a>
+      <hr />
+      <h3 class="font-semibold text-gray-800">Property Types</h3>
+      <a href="bungalows.html" class="text-blue-700 font-semibold hover:underline">Bungalows</a>
+      <a href="villas.html" class="text-gray-700 hover:underline">Villas</a>
+      <a href="pg.html" class="text-gray-700 hover:underline">PG</a>
+      <a href="flats.html" class="text-gray-700 hover:underline">Flats</a>
+      <a href="hotels.html" class="text-gray-700 hover:underline">Hotels</a>
+    </nav>
+  </header>
+  <main class="flex flex-1 overflow-hidden">
+    <section class="flex-1 flex flex-col p-4 overflow-auto">
+      <div id="property-details" class="bg-white rounded shadow p-6 mb-4 flex-1 overflow-auto">
+        <h2 class="text-2xl font-semibold mb-2" id="property-title">Select a bungalow</h2>
+        <p class="text-gray-700 mb-4" id="property-description">Property details will appear here.</p>
+        <p class="text-lg font-bold mb-2" id="property-price"></p>
+        <p class="text-sm text-gray-600 mb-2" id="property-area">Area: N/A</p>
+        <p class="text-sm text-gray-600 mb-2" id="property-rates">Rates: N/A</p>
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold mb-2">Seller Contact</h3>
+          <p id="seller-contact" class="text-blue-600 underline cursor-pointer">N/A</p>
+          <button id="contact-seller-btn" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Contact Seller</button>
+        </div>
+      </div>
+      <div id="ai-chat-container" class="bg-white rounded shadow p-4 h-48 flex flex-col">
+        <h3 class="text-lg font-semibold mb-2">AI Assistant</h3>
+        <div id="ai-chat" class="flex-1 overflow-y-auto bg-gray-50 p-2 rounded border"></div>
+        <input
+          id="ai-input"
+          type="text"
+          placeholder="Ask about bungalows..."
+          class="mt-2 w-full border rounded p-2"
+        />
+      </div>
+    </section>
+    <aside class="w-96 bg-white shadow-lg p-4 flex flex-col">
+      <h2 class="text-xl font-semibold mb-4">Bungalows for Sale</h2>
+      <ul id="property-list" class="overflow-y-auto flex-1 space-y-3"></ul>
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold mb-2">Property Images</h3>
+        <div id="image-slider" class="relative w-full h-64 overflow-hidden rounded mb-4">
+          <div id="slider-images" class="flex transition-transform duration-500 ease-in-out"></div>
+          <button id="prev-btn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-2 py-1 rounded hover:bg-opacity-75 transition"><</button>
+          <button id="next-btn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-2 py-1 rounded hover:bg-opacity-75 transition">></button>
+        </div>
+        <div id="model-viewer-container" class="w-full h-64 rounded overflow-hidden border border-gray-300">
+          <!-- 3D model viewer will be injected here -->
+        </div>
+      </div>
+    </aside>
+  </main>
+  <footer class="bg-white shadow p-4 text-center text-gray-600">
+    &copy; 2024 Real Estate Broker. All rights reserved.
+  </footer>
+  <script src="bungalows.js"></script>
+</body>
+</html>
