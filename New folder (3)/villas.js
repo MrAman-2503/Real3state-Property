@@ -3,9 +3,9 @@ let properties = [
     id: 1,
     title: "Luxury Villa",
     images: [
-      "https://via.placeholder.com/400x300?text=Villa+1-1",
-      "https://via.placeholder.com/400x300?text=Villa+1-2",
-      "https://via.placeholder.com/400x300?text=Villa+1-3"
+      "https://www.veeragroup.com/wp-content/uploads/2023/09/veera-eminence-landing.jpg",
+      "https://www.veeragroup.com/wp-content/uploads/2022/09/Frame-1-25.jpg",
+      "https://www.veeragroup.com/wp-content/uploads/2023/09/Veera-Ojas-Main.jpg"
     ],
     model3d: "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
     position: { lat: 37.7749, lng: -122.4194 },
@@ -96,10 +96,17 @@ function loadImageSlider(images) {
   const sliderImages = document.getElementById("slider-images");
   sliderImages.innerHTML = "";
   images.forEach((src) => {
+    const anchor = document.createElement("a");
+    anchor.href = src;
+    anchor.target = "_blank";
+    anchor.className = "w-full flex-shrink-0 block rounded overflow-hidden";
+
     const img = document.createElement("img");
     img.src = src;
-    img.className = "w-full flex-shrink-0 object-cover rounded";
-    sliderImages.appendChild(img);
+    img.className = "w-full object-cover rounded";
+    anchor.appendChild(img);
+
+    sliderImages.appendChild(anchor);
   });
   // Clear 3D model viewer when loading new images
   const modelViewerContainer = document.getElementById("model-viewer-container");
@@ -140,6 +147,73 @@ document.getElementById("next-btn").addEventListener("click", () => {
   if (currentSlideIndex < imagesCount - 1) {
     currentSlideIndex++;
     updateSliderPosition();
+  }
+});
+
+// Inquiry modal handling
+const inquiryModal = document.getElementById("inquiry-modal");
+const contactSellerBtn = document.getElementById("contact-seller-btn");
+const closeInquiryModalBtn = document.getElementById("close-inquiry-modal");
+const inquiryForm = document.getElementById("inquiry-form");
+const inquirySuccess = document.getElementById("inquiry-success");
+
+contactSellerBtn.addEventListener("click", () => {
+  inquiryModal.classList.remove("hidden");
+  inquiryModal.classList.add("opacity-0");
+  setTimeout(() => {
+    inquiryModal.classList.remove("opacity-0");
+    inquiryModal.classList.add("opacity-100");
+  }, 10);
+});
+
+closeInquiryModalBtn.addEventListener("click", () => {
+  inquiryModal.classList.add("opacity-0");
+  setTimeout(() => {
+    inquiryModal.classList.add("hidden");
+    inquirySuccess.classList.add("hidden");
+    inquiryForm.classList.remove("hidden");
+    inquiryForm.reset();
+    inquiryModal.classList.remove("opacity-100");
+  }, 300);
+});
+
+inquiryForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = inquiryForm.name.value.trim();
+  const email = inquiryForm.email.value.trim();
+  const message = inquiryForm.message.value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3001/submit-inquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (response.ok) {
+      inquiryForm.classList.add("hidden");
+      inquirySuccess.classList.remove("hidden");
+      localStorage.setItem("inquirySubmitted", "true");
+    } else {
+      alert("Failed to submit inquiry. Please try again later.");
+    }
+  } catch (error) {
+    alert("Error submitting inquiry. Please try again later.");
+  }
+});
+
+// Check if inquiry was already submitted and hide form if so
+window.addEventListener("load", () => {
+  if (localStorage.getItem("inquirySubmitted") === "true") {
+    inquiryForm.classList.add("hidden");
+    inquirySuccess.classList.remove("hidden");
   }
 });
 

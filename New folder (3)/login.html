@@ -6,6 +6,14 @@
   <title>Login - Real Estate Broker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome CDN for social media icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papb+X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body class="bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-700 min-h-screen text-white flex flex-col">
   <header class="bg-white bg-opacity-20 backdrop-blur-md p-4 flex justify-between items-center">
@@ -32,8 +40,37 @@
       <button type="submit" class="px-6 py-2 bg-blue-600 rounded text-white hover:bg-blue-700 transition">Login</button>
     </form>
   </main>
-  <footer class="bg-white bg-opacity-20 backdrop-blur-md p-4 text-center text-blue-100">
-    &copy; 2024 Real Estate Broker. All rights reserved.
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>Real Estate Broker is your trusted partner in finding the perfect property. We offer a wide range of villas, bungalows, flats, and more.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="seller.html">Sell Property</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>Email: info@realestatebroker.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Address: 123 Main Street, City, Country</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <p>
+          <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </p>
+      </div>
+    </div>
   </footer>
 </body>
 </html>

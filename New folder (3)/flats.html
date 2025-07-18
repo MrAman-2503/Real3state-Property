@@ -7,6 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
   <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome CDN for social media icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papb+X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q6X+6Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
   <header class="bg-white shadow p-4 flex justify-between items-center relative">
@@ -78,8 +86,37 @@
       </div>
     </aside>
   </main>
-  <footer class="bg-white shadow p-4 text-center text-gray-600">
-    &copy; 2024 Real Estate Broker. All rights reserved.
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>Real Estate Broker is your trusted partner in finding the perfect property. We offer a wide range of villas, bungalows, flats, and more.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="seller.html">Sell Property</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p>Email: info@realestatebroker.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <p>Address: 123 Main Street, City, Country</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <p>
+          <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </p>
+      </div>
+    </div>
   </footer>
   <script src="flats.js"></script>
 </body>
